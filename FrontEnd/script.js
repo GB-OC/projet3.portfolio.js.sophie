@@ -44,4 +44,33 @@ function filtrerProjets(categorie) {
   );
 }
 
+//fetch
+// Utilisez la méthode fetch pour faire une requête GET à l'API.
+fetch(apiUrl)
+  .then((response) => {
+    // Vérifiez si la réponse est OK (statut 200).
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des données");
+    }
+    // Si la réponse est OK, transformez-la en JSON.
+    return response.json();
+  })
+  .then((data) => {
+    genererContenuDynamique(data);
+    console.log(data);
+    projets = data;
+    categories = data.reduce((acc, item) => {
+      const existcategory = acc.find((i) => i.id === item.category.id);
+      if (!existcategory) {
+        acc.push(item.category);
+      }
+      return acc;
+    }, []);
+
+    genererfiltre(categories);
+  })
+  .catch((error) => {
+    // Attrapez et gérez les erreurs ici.
+    console.error("Erreur :", error);
+  });
 
