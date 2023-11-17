@@ -1,7 +1,7 @@
 // Remplacez l'URL de l'API par l'URL réelle de l'API que vous souhaitez utiliser.
 const apiUrl = "http://localhost:5678/api/works";
 let projet = [];
-let categories = [];
+let categories = ["Tous"];
 
 //contenue dynamique
 
@@ -35,14 +35,23 @@ function genererfiltre(categories) {
     bouton.addEventListener("click", () => filtrerProjets(categorie));
     filtresContainer.appendChild(bouton);
   });
+  const boutonTous = document.createElement("button");
+  boutonTous.textContent = "Tous";
+  boutonTous.addEventListener("click", () => filtrerProjets(null));
+  filtresContainer.appendChild(boutonTous);
 }
 // Fonction pour filtrer les projets
 function filtrerProjets(categorie) {
   console.log(categorie);
-  genererContenuDynamique(
-    projets.filter((item) => item.category.id === categorie.id)
-  );
+  if (categorie) {
+    genererContenuDynamique(
+      projets.filter((item) => item.category.id === categorie.id)
+    );
+  } else {
+    genererContenuDynamique(projets);
+  }
 }
+
 
 //fetch
 // Utilisez la méthode fetch pour faire une requête GET à l'API.
@@ -73,4 +82,3 @@ fetch(apiUrl)
     // Attrapez et gérez les erreurs ici.
     console.error("Erreur :", error);
   });
-

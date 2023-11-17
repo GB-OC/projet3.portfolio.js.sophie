@@ -22,6 +22,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: #FFFEF8;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -160,6 +161,7 @@ margin: auto;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0 10px;
 }
 #contact label {
 	margin: 2em 0 1em 0;
@@ -167,6 +169,7 @@ margin: auto;
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 10px;
 }
 
 input[type="submit"]{
@@ -178,6 +181,13 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	padding: 9px;
+    border: none;
+    outline: none;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
 }
 
 footer nav ul {
@@ -186,3 +196,80 @@ footer nav ul {
 	margin: 2em
 }
 
+#filtres {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+	gap: 10px;
+}
+
+#filtres button {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #1D6154;
+    border-radius: 60px;
+    color: #1D6154;
+    font-family: 'Syne';
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+#filtres button:hover {
+    background-color: #1D6154;
+    color: #FFFEF8;
+}
+
+#filtres button:last-child {
+    order: -1; 
+}
+
+
+
+#login {
+    text-align: center;
+	margin-top: 150px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+label {
+	display: flex;
+	justify-content: flex-start;
+    margin-bottom: 6px;
+}
+
+#email,
+#password {
+    height: 50px;
+    font-size: 1.8em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 24vw;
+	height: 5vh;
+	padding: 0 10px;
+	text-align: center;
+}
+#forgot-password {
+    font-family: 'Work Sans';
+    font-weight: 500;
+    color: #1D6154;
+    text-decoration: underline;
+}
+
+#forgot-password:hover {
+	color: #B1663C;
+}
