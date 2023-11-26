@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src=""></script>
+	<script src="login.js"></script>
 </head>
 <body>
 <header>
@@ -18,7 +18,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li><a href="loginpage.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -37,8 +37,14 @@
                 <input type="password" name="password" id="password" required>
             </div>
     
-            <input type="submit" value="Se connecter">
+		
+
+            <input type="submit" 
+			value="Se connecter" id="loginButton">
+
             <a href="#" id="forgot-password">Mot de passe oublié</a>
+
+			<div id="error-message"></div>
         </form>
     </section>
 </main>

@@ -57,24 +57,39 @@ function filtrerProjets(categorie) {
 // Utilisez la méthode fetch pour faire une requête GET à l'API.
 fetch(apiUrl)
   .then((response) => {
+    console.log(response)
     // Vérifiez si la réponse est OK (statut 200).
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des données");
     }
     // Si la réponse est OK, transformez-la en JSON.
     return response.json();
+    
   })
   .then((data) => {
     genererContenuDynamique(data);
     console.log(data);
     projets = data;
-    categories = data.reduce((acc, item) => {
-      const existcategory = acc.find((i) => i.id === item.category.id);
-      if (!existcategory) {
-        acc.push(item.category);
-      }
-      return acc;
-    }, []);
+    let categories = []
+    for (let i=0 ;i<data.length;i++) {
+      console.log (data[i])
+      const existcategory = categories.find((itemX) => itemX.id === data[i].category.id)
+            if (!existcategory) {
+              categories.push(data[i].category);}
+              console.log (categories)
+    }
+      // categories = data.reduce((acc, item) => {
+      //   console.log('acc',acc)
+      //   console.log('item',item)
+      //   const existcategory = acc.find((i) => i.id === item.category.id);
+      //   console.log('existcategory',existcategory)
+      //   if (!existcategory) {
+      //     acc.push(item.category);
+      //   }
+      //   return acc;
+      // }, []);
+
+
 
     genererfiltre(categories);
   })
@@ -82,3 +97,15 @@ fetch(apiUrl)
     // Attrapez et gérez les erreurs ici.
     console.error("Erreur :", error);
   });
+
+// Récupère le token d'authentification depuis le localStorage
+const authToken = localStorage.getItem('authToken');
+
+// Vérifie si le token est présent
+if (authToken) {
+    // Utilisez le token selon vos besoins
+    console.log('Token d\'authentification récupéré sur la page index:', authToken);
+} else {
+    // Gérez le cas où le token n'est pas présent
+    console.log('Aucun token d\'authentification trouvé sur la page index.');
+}
