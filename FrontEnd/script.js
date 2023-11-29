@@ -97,15 +97,3 @@ fetch(apiUrl)
     // Attrapez et gérez les erreurs ici.
     console.error("Erreur :", error);
   });
-
-// Récupère le token d'authentification depuis le localStorage
-const authToken = localStorage.getItem('authToken');
-
-// Vérifie si le token est présent
-if (authToken) {
-    // Utilisez le token selon vos besoins
-    console.log('Token d\'authentification récupéré sur la page index:', authToken);
-} else {
-    // Gérez le cas où le token n'est pas présent
-    console.log('Aucun token d\'authentification trouvé sur la page index.');
-}

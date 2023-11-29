@@ -25,6 +25,11 @@ time, mark, audio, video {
 	background-color: #FFFEF8;
 	text-decoration: none;
 }
+
+a {
+	color: #131414;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -100,6 +105,11 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+a:hover {
+	color: #B1663C;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -273,4 +283,25 @@ label {
 
 #forgot-password:hover {
 	color: #B1663C;
+}
+
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    font-size: 14px;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    bottom: 0;
+    margin-left: 30px;
+    color: #131414;
+    position: absolute;
+	display: none;
+}
+
+.absolute img {
+	margin-right: 10px;
+	margin-left: 20px;
 }
