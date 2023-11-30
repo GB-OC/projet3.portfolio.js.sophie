@@ -1,6 +1,4 @@
-// Remplacez l'URL de l'API par l'URL réelle de l'API que vous souhaitez utiliser.
 const apiUrl = "http://localhost:5678/api/works";
-let projet = [];
 let categories = ["Tous"];
 
 //contenue dynamique
@@ -53,16 +51,15 @@ function filtrerProjets(categorie) {
 }
 
 
-//fetch
-// Utilisez la méthode fetch pour faire une requête GET à l'API.
+// Utilise la méthode fetch pour faire une requête GET à l'API.
 fetch(apiUrl)
   .then((response) => {
     console.log(response)
-    // Vérifiez si la réponse est OK (statut 200).
+    // Vérifie si la réponse est OK (statut 200).
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des données");
     }
-    // Si la réponse est OK, transformez-la en JSON.
+    // transofrme en JSON.
     return response.json();
     
   })
@@ -92,8 +89,44 @@ fetch(apiUrl)
 
 
     genererfiltre(categories);
+
+    afficherImagesDansModal(data);
+
   })
   .catch((error) => {
-    // Attrapez et gérez les erreurs ici.
     console.error("Erreur :", error);
   });
+
+      // Fonction pour créer des miniatures et les afficher dans la modale
+function afficherImagesDansModal(stpfonctionne) {
+  console.log("Entrée dans la fonction afficherImagesDansModal");
+
+  const galleryModal = document.querySelector(".admin-panel");
+  console.log("Élément .admin-panel trouvé :", galleryModal);
+
+  // Check si stpfonctionne est défini et est un tableau
+  if (stpfonctionne && Array.isArray(stpfonctionne)) {
+    console.log("Contenu de stpfonctionne :", stpfonctionne);
+
+    stpfonctionne.forEach((projet) => {
+      console.log("Début de la boucle forEach pour le projet :", projet);
+
+      const miniature = document.createElement("div");
+      miniature.classList.add("thumbnail-modal");
+
+      const img = document.createElement("img");
+      img.src = projet.imageUrl;
+      console.log("Image créée avec l'URL :", img.src);
+
+      miniature.appendChild(img);
+      console.log("Image ajoutée à la miniature :", miniature);
+
+      galleryModal.appendChild(miniature);
+      console.log("Miniature ajoutée à la galerie .admin-panel :", miniature);
+    });
+  } else {
+    console.error("Erreur : stpfonctionne n'est pas défini ou n'est pas un tableau.");
+  }
+}
+
+
