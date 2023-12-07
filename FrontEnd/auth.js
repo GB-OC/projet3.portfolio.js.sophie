@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Sélectionneur de bouton
     const openModalBtn = document.getElementById("openModalBtn");
     const closeModalBtn = document.getElementById("closeModalBtn");
+    const closeModalBtnDansAjoutPhoto = document.getElementById("closeModalBtnDansAjoutPhoto");
+    
+
 
     // Ouvrir la fenêtre modale au clic sur le "Modifier"
     openModalBtn.addEventListener("click", function () {
@@ -52,5 +55,38 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModalBtn.addEventListener("click", function () {
       modal.style.display = "none";
     });
+
+    closeModalBtnDansAjoutPhoto.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+
   }, 2000);
 });
+
+
+function afficherModaleAjoutPhoto() {
+  const modal = document.querySelector('.modal-content');
+  const modalAjoutPhoto = document.querySelector('.modal-content2');
+
+  // Masque l'élément modal principal
+  modal.style.display = 'none';
+
+  // Assurez-vous également que l'élément modalAjoutPhoto est visible
+  modalAjoutPhoto.style.display = 'block';
+}
+
+document.getElementById('addPhotoBtn').addEventListener('click', afficherModaleAjoutPhoto);
+
+function afficherModalePrincipale() {
+  const modal = document.querySelector('.modal-content');
+  const modalAjoutPhoto = document.querySelector('.modal-content2');
+
+  // Assurez-vous que l'élément modal principal est visible
+  modal.style.display = 'block';
+
+  // Masque l'élément modalAjoutPhoto
+  modalAjoutPhoto.style.display = 'none';
+}
+
+document.getElementById('previousBtn').addEventListener('click', afficherModalePrincipale);
+

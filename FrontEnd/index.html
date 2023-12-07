@@ -12,6 +12,7 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <script src="https://kit.fontawesome.com/b23b51d190.js" crossorigin="anonymous"></script>
     <script src="auth.js" defer></script>
     <script src="script.js" defer></script>
 
@@ -53,6 +54,7 @@
         </article>
       </section>
 	  <section id="portfolio">
+          <div class="portfolio-title">
       <h2 class="relative">Mes Projets 
         <span class="absolute">
           <a href="#" id="openModalBtn">
@@ -60,6 +62,7 @@
           </a>
         </span>
       </h2>
+          </div>
         <div id="filtres"></div>
         <div class="gallery">
         </div>
@@ -89,22 +92,49 @@
     <aside class="modal" id="myModal">
       <div class="modal-content">
         <span class="close" id="closeModalBtn">&times;</span>
-        
-        
         <div class="gallery-title">
           <span class="modal-text">Galerie Photo</span>
         </div>
-    
-        
         <div class="admin-panel">
         </div>
-    
-        
         <div class="horizontal-line">
           <hr>
           <button id="addPhotoBtn">Ajouter une photo</button>
         </div>
       </div>
+
+      <div class="modal-content2">
+        <span class="close" id="closeModalBtnDansAjoutPhoto">×</span>
+        <span id="previousBtn"><i class="fas fa-arrow-left"></i></span>
+        <div class="gallery-title">
+          <span class="modal-text">Ajout Photo</span>
+        </div>
+        <div class="Ajout-panel">
+
+
+
+          <div id="dropBox">
+            <i class="fa-regular fa-image" aria-hidden="true"></i>
+            <button type="file" id="imgUpload" multiple="" accept="image/*" onchange="filesManager(this.files)">+ Ajouter photo</button>
+            <span class="SmallTextDropbox"><i>jpg, png : 4mo max</i></span>
+        </div>
+
+        <div class="DivTitreInput">
+        <label for="infoCategorie">Titre</label>
+        <input type="text" id="infoTitre"/>
+        </div>
+
+        <div class="DivCategorieInput">
+        <label for="infoCategorie">Catégorie</label>
+        <input type="text" id="infoCategorie"/>
+        </div>
+      </div>
+
+        <div class="horizontal-line">
+          <hr>
+          <button id="EnvoyerPhoto">Valider</button>
+        </div>
+      
     </aside>
   </body>
 </html>

@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
+b, u, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
@@ -24,6 +24,16 @@ time, mark, audio, video {
 	vertical-align: baseline;
 	background-color: #FFFEF8;
 	text-decoration: none;
+}
+
+i {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+text-decoration: none;
 }
 
 a {
@@ -299,6 +309,7 @@ label {
     color: #131414;
     position: absolute;
 	display: none;
+	left: 100%;
 }
 
 .absolute img {
@@ -332,6 +343,7 @@ label {
   .gallery-title {
 	margin-top: 40px; 
 	margin-bottom: 46px;
+	background-color: #FFFFFF;
   }
   
   /* Styles spécifiques au texte dans .modal-text */
@@ -375,7 +387,7 @@ label {
 	border: none;
 	outline: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	padding: 0 50px 0 50px; /* 50px à droite et à gauche du texte */
+	padding: 0 50px 0 50px; 
 	font-family: 'Syne';
 	font-size: 14px;
 	font-weight: 700;
@@ -384,7 +396,7 @@ label {
 	text-align: center;
 	color: white;
 	background-color: #1D6154;
-	margin: 10px 0; /* 10px en haut et en bas du bouton */
+	margin: 10px 0; 
 	white-space: nowrap;
 	margin-top: 38px
 }
@@ -401,3 +413,182 @@ label {
 	width: 80px; 
 	height: 105px;
   }
+  .portfolio-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .thumbnail-modal {
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .thumbnail-modal img {
+    width: 80px;
+    height: 105px;
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    height: 17px;
+    width: 17px;
+    padding: 0; 
+  }
+  
+
+/*modale 2*/
+
+  .modal-content2 {
+	width: 630px;
+	height: 688px;
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+	font-family: 'Work Sans', sans-serif;
+	text-align: center;
+	display: none;
+  }
+
+  .Ajout-panel {
+	margin: 10px;
+	font-size: 27px;
+	max-height: 427px;
+	min-height: 427px;
+	overflow: auto;
+	margin-left: 85px;
+	margin-right: 85px;
+	text-align: left;
+  }
+
+  #EnvoyerPhoto {
+	height: 36px;
+	width: 237px;
+	top: 1267px;
+	left: 600px;
+	border-radius: 60px;
+	border: none;
+	outline: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0 50px 0 50px; 
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 17px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: white;
+	background-color: #A7A7A7;
+	margin: 10px 0; 
+	white-space: nowrap;
+	margin-top: 38px
+}
+
+#previousBtn {
+	position: absolute;
+    top: 26px;
+    left: 30px;
+    font-size: 24px;
+	max-height: 21px;
+	min-height: 21px;
+    font-weight: bold;
+    cursor: pointer;
+	color: #000; /* Couleur du texte */
+	background-color: transparent; /* Fond transparent */
+	border: none; /* Pas de bordure */
+	outline: none; /* Pas d'effet de focus */
+}
+
+/* dropbox */
+
+#dropBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 169px; /* Ajustez la hauteur selon vos besoins */
+    background-color: #E8F1F6;
+    border-radius: 3px;
+}
+
+
+
+.SmallTextDropbox {
+	background-color: #E8F1F6;
+}
+
+.fa-regular.fa-image {
+    color: #B9C5CC;
+    font-size: 78px; /* Utilisez "font-size" au lieu de "size" pour définir la taille de la police */
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imgUpload {
+		height: 36px;
+		width: 237px;
+		border-radius: 60px;
+		border: none;
+		outline: none;
+		padding: 0 50px;
+		font-family: 'Syne';
+		font-size: 14px;
+		font-weight: 700;
+		text-align: center;
+		color: #306685;
+		background-color: #CBD6DC;
+		margin-bottom: 10px;
+		margin-top: 8px;
+}
+
+.SmallTextDropbox {
+	font-size: 10px;
+}
+
+
+
+.DivTitreInput,
+.DivCategorieInput {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.42px;
+}
+
+.DivTitreInput {
+	margin-top: 30px;
+}
+
+.DivCategorieInput {
+	margin-top: 21px;
+}
+
+
+
+#infoCategorie,
+#infoTitre {
+  width: 420px;
+  height: 35px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px;
+  border: 0px;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre */
+}
