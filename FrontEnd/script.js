@@ -142,7 +142,7 @@ function afficherImagesDansModal(stpfonctionne) {
 
           if (response.ok) {
             console.log(`Projet avec l'ID ${projectId} supprimé avec succès.`);
-            galleryModal.removeChild(miniature); // Supprime également la miniature de l'interface
+            galleryModal.removeChild(miniature); 
           } else {
             console.error(
               `Erreur lors de la suppression du projet avec l'ID ${projectId}.`
@@ -153,7 +153,6 @@ function afficherImagesDansModal(stpfonctionne) {
         }
 
         event.stopPropagation();
-        galleryModal.removeChild(miniature);
       });
 
       // Crée le titre du portfolio
@@ -173,11 +172,124 @@ function afficherImagesDansModal(stpfonctionne) {
       // Ajoute la miniature à la galerie .admin-panel
       galleryModal.appendChild(miniature);
     });
-  } else {
-    // Gère l'erreur si stpfonctionne n'est pas défini ou n'est pas un tableau
-    console.error(
-      "Erreur : stpfonctionne n'est pas défini ou n'est pas un tableau."
-    );
   }
 }
 
+
+
+// Variable pour stocker l'image
+let loadedFile = null;
+
+// File input change event
+document.getElementById('imgUpload').addEventListener('change', function () {
+  filesManager(this.files);
+});
+
+// Drag and drop events for dropBox
+var dropBox = document.getElementById('dropBox');
+
+dropBox.addEventListener('dragover', function (e) {
+  e.preventDefault();
+  dropBox.style.border = '2px dashed #aaa';
+});
+
+dropBox.addEventListener('dragleave', function () {
+  dropBox.style.border = '2px dashed #ccc';
+});
+
+dropBox.addEventListener('drop', function (e) {
+  e.preventDefault();
+  dropBox.style.border = '2px dashed #ccc';
+  filesManager(e.dataTransfer.files);
+});
+
+function filesManager(files) {
+  var file = files[0];
+
+  if (file && file.type.startsWith('image/')) {
+    loadedFile = file;
+
+    // preview de l'image
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var loadedImage = new Image();
+      loadedImage.src = e.target.result;
+      loadedImage.style.width = '129px';
+      loadedImage.style.height = '169px';
+
+      dropBox.innerHTML = '';
+      dropBox.appendChild(loadedImage);
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    loadedFile = null;
+    alert('Veuillez sélectionner un fichier image valide');
+  }
+}
+
+function reloadPage() {
+  // Reload the page
+  location.reload();
+}
+
+function uploadFile(title, category) {
+  // Check if a file is loaded
+  if (loadedFile) {
+    var formData = new FormData();
+    formData.append('image', loadedFile);
+    formData.append('title', title);
+    formData.append('category', category);
+
+    const token = localStorage.getItem("authToken");
+
+    fetch('http://localhost:5678/api/works', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Server response:', data);
+      // Gére la réponse du serveur si nécessaire
+
+      // Recharge la page après le traitement de la réponse
+      reloadPage();
+    })
+    .catch(error => console.error('Error:', error));
+  }
+}
+
+// Connecte la fonction au bouton "EnvoyerPhoto"
+document.getElementById('EnvoyerPhoto').addEventListener('click', function () {
+  // Récupère les valeurs des champs de saisie
+  var title = document.getElementById('infoTitre').value.trim();
+  var category = document.getElementById('infoCategorie').value.trim();
+
+  // Vérifie si les champs sont remplis et si une image est chargée
+  if (title && category && loadedFile) {
+    // Appelle la fonction pour envoyer le fichier et les données supplémentaires au serveur
+    uploadFile(title, category);
+  }
+});
+
+// Ajoute des écouteurs d'événements pour mettre à jour la couleur du bouton lors de la saisie du titre, de la sélection de la catégorie et du chargement de l'image
+document.getElementById('infoTitre').addEventListener('input', updateButtonColor);
+document.getElementById('infoCategorie').addEventListener('change', updateButtonColor);
+document.getElementById('imgUpload').addEventListener('change', updateButtonColor);
+
+// Fonction pour mettre à jour la couleur du bouton
+function updateButtonColor() {
+  // Récupère les valeurs des champs de saisie
+  var title = document.getElementById('infoTitre').value.trim();
+  var category = document.getElementById('infoCategorie').value.trim();
+
+  // Vérifie si les champs sont remplis et si une image est chargée
+  if (title && category && loadedFile) {
+    // Change la couleur du bouton en vert
+    document.getElementById('EnvoyerPhoto').style.backgroundColor = '#1D6154'; // Vert
+  }
+}

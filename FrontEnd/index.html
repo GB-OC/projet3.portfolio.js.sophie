@@ -115,7 +115,8 @@
 
           <div id="dropBox">
             <i class="fa-regular fa-image" aria-hidden="true"></i>
-            <button type="file" id="imgUpload" multiple="" accept="image/*" onchange="filesManager(this.files)">+ Ajouter photo</button>
+            <input type="file" id="imgUpload" style="display: none" multiple="" accept="image/*">
+            <label for="imgUpload" id="uploadLabel">+ Ajouter photo</label>
             <span class="SmallTextDropbox"><i>jpg, png : 4mo max</i></span>
         </div>
 
@@ -125,10 +126,16 @@
         </div>
 
         <div class="DivCategorieInput">
-        <label for="infoCategorie">Catégorie</label>
-        <input type="text" id="infoCategorie"/>
+          <label for="infoCategorie">Catégorie</label>
+          <select id="infoCategorie" name="infoCategorie">
+            <option value="" disabled selected> </option>
+            <option value="1">Objets</option>
+            <option value="2">Appartements</option>
+            <option value="3">Hôtels & restaurants</option>
+          </select>
         </div>
-      </div>
+       
+        </div>
 
         <div class="horizontal-line">
           <hr>

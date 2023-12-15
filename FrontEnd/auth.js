@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Récupérer le token d'authentification depuis le local storage
   const authToken = localStorage.getItem("authToken");
-
-  setTimeout(function () {
-
     if (authToken) {
       // Sélectionner l'élément avec la classe 'login-logout'
       const loginLogoutLink = document.querySelector(".login-logout");
@@ -59,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModalBtnDansAjoutPhoto.addEventListener("click", function () {
       modal.style.display = "none";
     });
-
-  }, 2000);
 });
 
 
@@ -71,7 +66,6 @@ function afficherModaleAjoutPhoto() {
   // Masque l'élément modal principal
   modal.style.display = 'none';
 
-  // Assurez-vous également que l'élément modalAjoutPhoto est visible
   modalAjoutPhoto.style.display = 'block';
 }
 
@@ -81,7 +75,6 @@ function afficherModalePrincipale() {
   const modal = document.querySelector('.modal-content');
   const modalAjoutPhoto = document.querySelector('.modal-content2');
 
-  // Assurez-vous que l'élément modal principal est visible
   modal.style.display = 'block';
 
   // Masque l'élément modalAjoutPhoto

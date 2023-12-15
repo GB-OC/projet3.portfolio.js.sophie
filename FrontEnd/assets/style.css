@@ -503,10 +503,10 @@ label {
 	min-height: 21px;
     font-weight: bold;
     cursor: pointer;
-	color: #000; /* Couleur du texte */
-	background-color: transparent; /* Fond transparent */
-	border: none; /* Pas de bordure */
-	outline: none; /* Pas d'effet de focus */
+	color: #000; 
+	background-color: transparent; 
+	border: none; 
+	outline: none; 
 }
 
 /* dropbox */
@@ -516,7 +516,7 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 169px; /* Ajustez la hauteur selon vos besoins */
+    height: 169px; 
     background-color: #E8F1F6;
     border-radius: 3px;
 }
@@ -529,7 +529,7 @@ label {
 
 .fa-regular.fa-image {
     color: #B9C5CC;
-    font-size: 78px; /* Utilisez "font-size" au lieu de "size" pour définir la taille de la police */
+    font-size: 78px;
 }
 
 .centered-content {
@@ -538,21 +538,19 @@ label {
     align-items: center;
 }
 
-#imgUpload {
-		height: 36px;
-		width: 237px;
+#uploadLabel {
 		border-radius: 60px;
 		border: none;
 		outline: none;
 		padding: 0 50px;
 		font-family: 'Syne';
 		font-size: 14px;
-		font-weight: 700;
-		text-align: center;
 		color: #306685;
 		background-color: #CBD6DC;
 		margin-bottom: 10px;
 		margin-top: 8px;
+		line-height: 36px;
+
 }
 
 .SmallTextDropbox {
@@ -581,14 +579,15 @@ label {
 
 #infoCategorie,
 #infoTitre {
-  width: 420px;
-  height: 35px;
+  width: 99.5%;
+  height: 51px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  padding: 8px;
+  padding: 0px;
   border: 0px;
   border-radius: 5px;
   outline: none;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-indent: 16px;
 }
