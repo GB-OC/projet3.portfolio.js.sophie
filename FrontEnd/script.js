@@ -76,16 +76,6 @@ fetch(apiUrl)
       }
       console.log(categories);
     }
-    // categories = data.reduce((acc, item) => {
-    //   console.log('acc',acc)
-    //   console.log('item',item)
-    //   const existcategory = acc.find((i) => i.id === item.category.id);
-    //   console.log('existcategory',existcategory)
-    //   if (!existcategory) {
-    //     acc.push(item.category);
-    //   }
-    //   return acc;
-    // }, []);
 
     genererfiltre(categories);
 
