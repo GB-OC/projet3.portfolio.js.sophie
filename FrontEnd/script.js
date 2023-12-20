@@ -53,43 +53,45 @@ function filtrerProjets(categorie) {
   }
 }
 
+fetchData();
 // Utilise la méthode fetch pour faire une requête GET à l'API.
-fetch(apiUrl)
-  .then((response) => {
-    // Vérifie si la réponse est OK (statut 200).
-    if (!response.ok) {
-      throw new Error("Erreur lors de la récupération des données");
-    }
-    // transofrme en JSON.
-    return response.json();
-  })
-  .then((data) => {
-    genererContenuDynamique(data);
-    projets = data;
-    let categories = [];
-    for (let i = 0; i < data.length; i++) {
-      const existcategory = categories.find(
-        (itemX) => itemX.id === data[i].category.id
-      );
-      if (!existcategory) {
-        categories.push(data[i].category);
+function fetchData() {
+  return fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des données");
       }
-    }
+      return response.json();
+    })
+    .then((data) => {
+      genererContenuDynamique(data);
+      projets = data;
+      let categories = [];
+      for (let i = 0; i < data.length; i++) {
+        const existcategory = categories.find(
+          (itemX) => itemX.id === data[i].category.id
+        );
+        if (!existcategory) {
+          categories.push(data[i].category);
+        }
+      }
 
-    genererfiltre(categories);
+      genererfiltre(categories);
 
-    afficherImagesDansModal(data);
-  })
-  .catch((error) => {
-    console.error("Erreur :", error);
-    alert("Une erreur s'est produite lors du chargement des données.");
-  });
+      afficherImagesDansModal(data);
+    })
+    .catch((error) => {
+      console.error("Erreur :", error);
+      alert("Une erreur s'est produite lors du chargement des données.");
+    });
+}
 
 function afficherImagesDansModal(afficherProjetsDansModal) {
   // Fonction pour afficher des miniatures dans la modale
 
   // Sélectionne l'élément de la galerie
   const galleryModal = document.querySelector(".admin-panel");
+  galleryModal.innerHTML = "";
 
   // Vérifie si afficherProjetsDansModal est défini et est un tableau
   if (afficherProjetsDansModal && Array.isArray(afficherProjetsDansModal)) {
@@ -224,11 +226,6 @@ function filesManager(files) {
   }
 }
 
-function reloadPage() {
-  // Reload the page
-  location.reload();
-}
-
 function uploadFile(title, category) {
   // Check if a file is loaded
   if (loadedFile) {
@@ -264,10 +261,8 @@ function uploadFile(title, category) {
         }
       })
       .then(function (data) {
-        // Traite la réponse du serveur si nécessaire
-    
-        // Recharge la page après le traitement de la réponse
-        reloadPage();
+        fetchData(); // Appel de la fonction pour récupérer à nouveau les données
+        alert("L'ajout de la photo a réussi !");
       })
       .catch(function (error) {
         // Gère les erreurs lors de la requête
