@@ -12,10 +12,12 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="https://kit.fontawesome.com/b23b51d190.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/b23b51d190.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="auth.js" defer></script>
     <script src="script.js" defer></script>
-
   </head>
   <body>
     <header>
@@ -53,20 +55,23 @@
           </p>
         </article>
       </section>
-	  <section id="portfolio">
-          <div class="portfolio-title">
-      <h2 class="relative">Mes Projets 
-        <span class="absolute">
-          <a href="#" id="openModalBtn">
-            <img src="./assets/icons/Group.svg" alt="Icone Modifier" />Modifier
-          </a>
-        </span>
-      </h2>
-          </div>
-        <div id="filtres"></div>
-        <div class="gallery">
+      <section id="portfolio">
+        <div class="portfolio-title">
+          <h2 class="relative">
+            Mes Projets
+            <span class="absolute">
+              <a href="#" id="openModalBtn">
+                <img
+                  src="./assets/icons/Group.svg"
+                  alt="Icone Modifier"
+                />Modifier
+              </a>
+            </span>
+          </h2>
         </div>
-    </section>
+        <div id="filtres"></div>
+        <div class="gallery"></div>
+      </section>
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
@@ -95,10 +100,9 @@
         <div class="gallery-title">
           <span class="modal-text">Galerie Photo</span>
         </div>
-        <div class="admin-panel">
-        </div>
+        <div class="admin-panel"></div>
         <div class="horizontal-line">
-          <hr>
+          <hr />
           <button id="addPhotoBtn">Ajouter une photo</button>
         </div>
       </div>
@@ -110,38 +114,40 @@
           <span class="modal-text">Ajout Photo</span>
         </div>
         <div class="Ajout-panel">
-
-
-
           <div id="dropBox">
             <i class="fa-regular fa-image" aria-hidden="true"></i>
-            <input type="file" id="imgUpload" style="display: none" multiple="" accept="image/*">
+            <input
+              type="file"
+              id="imgUpload"
+              style="display: none"
+              multiple=""
+              accept="image/*"
+            />
             <label for="imgUpload" id="uploadLabel">+ Ajouter photo</label>
             <span class="SmallTextDropbox"><i>jpg, png : 4mo max</i></span>
-        </div>
+          </div>
 
-        <div class="DivTitreInput">
-        <label for="infoCategorie">Titre</label>
-        <input type="text" id="infoTitre"/>
-        </div>
+          <div class="DivTitreInput">
+            <label for="infoCategorie">Titre</label>
+            <input type="text" id="infoTitre" />
+          </div>
 
-        <div class="DivCategorieInput">
-          <label for="infoCategorie">Catégorie</label>
-          <select id="infoCategorie" name="infoCategorie">
-            <option value="" disabled selected> </option>
-            <option value="1">Objets</option>
-            <option value="2">Appartements</option>
-            <option value="3">Hôtels & restaurants</option>
-          </select>
-        </div>
-       
+          <div class="DivCategorieInput">
+            <label for="infoCategorie">Catégorie</label>
+            <select id="infoCategorie" name="infoCategorie">
+              <option value="" disabled selected>Sélectionner</option>
+              <option value="1">Objets</option>
+              <option value="2">Appartements</option>
+              <option value="3">Hôtels & restaurants</option>
+            </select>
+          </div>
         </div>
 
         <div class="horizontal-line">
-          <hr>
+          <hr />
           <button id="EnvoyerPhoto">Valider</button>
         </div>
-      
+      </div>
     </aside>
   </body>
 </html>
