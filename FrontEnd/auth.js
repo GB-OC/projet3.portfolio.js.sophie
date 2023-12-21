@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Récupérer le token d'authentification depuis le local storage
+
   const authToken = localStorage.getItem("authToken");
     if (authToken) {
-      // Sélectionner l'élément avec la classe 'login-logout'
+
       const loginLogoutLink = document.querySelector(".login-logout");
 
       // Modifier le texte du lien en "logout"
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Ajouter un gestionnaire d'événements au clic sur le lien "logout"
       loginLogoutLink.addEventListener("click", function (event) {
-        // Empêcher le comportement par défaut du lien (suivre le lien)
+        // Empêcher le comportement par défaut du lien 
         event.preventDefault();
 
-        // Logique de déconnexion
+        // Logique de déco
         localStorage.removeItem("authToken");
 
         // Redirige vers landingpage
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const filtresDiv = document.getElementById("filtres");
       filtresDiv.style.display = "none";
 
-      // Sélectionner l'élément avec la classe 'absolute' à l'intérieur de la div 'filtres'
       const absoluteElement = document.querySelector(".absolute");
       absoluteElement.style.display = "contents";
     }
@@ -43,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
 
-    // Ouvrir la fenêtre modale au clic sur le "Modifier"
+    // Ouvrir modale
     openModalBtn.addEventListener("click", function () {
       modal.style.display = "block";
     });
 
-    // Fermer la fenêtre modale au clic sur le x
+    // Fermer modale
     closeModalBtn.addEventListener("click", function () {
       modal.style.display = "none";
     });

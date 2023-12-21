@@ -97,11 +97,11 @@ function afficherImagesDansModal(afficherProjetsDansModal) {
   if (afficherProjetsDansModal && Array.isArray(afficherProjetsDansModal)) {
     // Parcourt chaque projet dans le tableau afficherProjetsDansModal
     afficherProjetsDansModal.forEach((projet) => {
-      // Crée un élément div pour la miniature
+      // div pour la miniature
       const miniature = document.createElement("div");
       miniature.classList.add("thumbnail-modal");
 
-      // Crée un bouton de suppression
+      // Bouton de suppression
       const deleteButton = document.createElement("button");
       deleteButton.className = "delete-button";
 
@@ -114,9 +114,9 @@ function afficherImagesDansModal(afficherProjetsDansModal) {
       deleteButton.addEventListener("click", async (event) => {
         
         // Appel API pour supprimer de la base de données
-        const projectId = projet.id; // Récupère l'ID du projet à partir de l'objet projet
-        const apiUrl2 = `http://localhost:5678/api/works/${projectId}`; // Utilise l'ID dans l'URL
-        const token = localStorage.getItem("authToken"); //recupére jeton authtoken
+        const projectId = projet.id; 
+        const apiUrl2 = `http://localhost:5678/api/works/${projectId}`; 
+        const token = localStorage.getItem("authToken"); 
 
         // Effectuer la requête DELETE avec le jeton d'authentification
         try {
@@ -141,7 +141,6 @@ function afficherImagesDansModal(afficherProjetsDansModal) {
       } else {
         if (response.status === 401) {
           alert("Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter.");
-          // Vous pouvez également déconnecter l'utilisateur ou effectuer d'autres actions nécessaires
         } else {
           console.error(
             `Erreur lors de la suppression du projet avec l'ID ${projectId}.`
@@ -245,47 +244,42 @@ function uploadFile(title, category) {
       },
     })
       .then(function (response) {
-        // Vérifie si la réponse est OK (statut 200)
+
         if (response.ok) {
-          // Si la réponse est OK, traite la réponse en format JSON
+
           return response.json();
         } else {
-          // Si la réponse est un statut 401, affiche une alerte et déconnecte l'utilisateur
+
           if (response.status === 401) {
             alert("Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter.");
-            // Vous pouvez également implémenter le code pour déconnecter l'utilisateur ici
           }
     
-          // Sinon, rejette la promesse avec une erreur
           throw new Error("Erreur lors de l'ajout du projet");
         }
       })
       .then(function (data) {
-        fetchData(); // Appel de la fonction pour récupérer à nouveau les données
+        fetchData(); 
         alert("L'ajout de la photo a réussi !");
       })
       .catch(function (error) {
-        // Gère les erreurs lors de la requête
+
         console.error("Error:", error);
     });
 }
 }
 
 
-// Connecte la fonction au bouton "EnvoyerPhoto"
 document.getElementById("EnvoyerPhoto").addEventListener("click", function () {
-  // Récupère les valeurs des champs de saisie
+
   var title = document.getElementById("infoTitre").value.trim();
   var category = document.getElementById("infoCategorie").value.trim();
 
-  // Vérifie si les champs sont remplis et si une image est chargée
   if (title && category && loadedFile) {
-    // Appelle la fonction pour envoyer le fichier et les données supplémentaires au serveur
+
     uploadFile(title, category);
   }
 });
 
-// Ajoute des écouteurs d'événements pour mettre à jour la couleur du bouton lors de la saisie du titre, de la sélection de la catégorie et du chargement de l'image
 document
   .getElementById("infoTitre")
   .addEventListener("input", updateButtonColor);
@@ -296,15 +290,14 @@ document
   .getElementById("imgUpload")
   .addEventListener("change", updateButtonColor);
 
-// Fonction pour mettre à jour la couleur du bouton
+// Maj couleur bouton
 function updateButtonColor() {
   // Récupère les valeurs des champs de saisie
   var title = document.getElementById("infoTitre").value.trim();
   var category = document.getElementById("infoCategorie").value.trim();
 
-  // Vérifie si les champs sont remplis et si une image est chargée
   if (title && category && loadedFile) {
-    // Change la couleur du bouton en vert
+
     document.getElementById("EnvoyerPhoto").style.backgroundColor = "#1D6154"; // Vert
   }
 }
