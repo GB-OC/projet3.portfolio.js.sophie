@@ -112,11 +112,10 @@ function afficherImagesDansModal(afficherProjetsDansModal) {
 
       // Ajoute un écouteur d'événements au bouton de suppression
       deleteButton.addEventListener("click", async (event) => {
-        
         // Appel API pour supprimer de la base de données
-        const projectId = projet.id; 
-        const apiUrl2 = `http://localhost:5678/api/works/${projectId}`; 
-        const token = localStorage.getItem("authToken"); 
+        const projectId = projet.id;
+        const apiUrl2 = `http://localhost:5678/api/works/${projectId}`;
+        const token = localStorage.getItem("authToken");
 
         // Effectuer la requête DELETE avec le jeton d'authentification
         try {
@@ -130,29 +129,32 @@ function afficherImagesDansModal(afficherProjetsDansModal) {
           });
 
           if (response.ok) {
-
             // Retire l'image du DOM
-            const figureElement = document.querySelector(`.gallery figure[data-project-id="${projectId}"]`);
+            const figureElement = document.querySelector(
+              `.gallery figure[data-project-id="${projectId}"]`
+            );
             if (figureElement) {
               figureElement.remove();
             }
 
             galleryModal.removeChild(miniature);
-      } else {
-        if (response.status === 401) {
-          alert("Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter.");
-        } else {
-          console.error(
-            `Erreur lors de la suppression du projet avec l'ID ${projectId}.`
-          );
+          } else {
+            if (response.status === 401) {
+              alert(
+                "Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter."
+              );
+            } else {
+              console.error(
+                `Erreur lors de la suppression du projet avec l'ID ${projectId}.`
+              );
+            }
+          }
+        } catch (error) {
+          console.error("Erreur lors de la requête API :", error);
         }
-      }
-    } catch (error) {
-      console.error("Erreur lors de la requête API :", error);
-    }
-  
-    event.stopPropagation();
-  });
+
+        event.stopPropagation();
+      });
 
       // Crée le titre du portfolio
       const portfolioTitle = document.createElement("h2");
@@ -244,38 +246,33 @@ function uploadFile(title, category) {
       },
     })
       .then(function (response) {
-
         if (response.ok) {
-
           return response.json();
         } else {
-
           if (response.status === 401) {
-            alert("Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter.");
+            alert(
+              "Votre session a expiré. Veuillez vous déconnecter puis vous reconnecter."
+            );
           }
-    
+
           throw new Error("Erreur lors de l'ajout du projet");
         }
       })
       .then(function (data) {
-        fetchData(); 
+        fetchData();
         alert("L'ajout de la photo a réussi !");
       })
       .catch(function (error) {
-
         console.error("Error:", error);
-    });
+      });
+  }
 }
-}
-
 
 document.getElementById("EnvoyerPhoto").addEventListener("click", function () {
-
   var title = document.getElementById("infoTitre").value.trim();
   var category = document.getElementById("infoCategorie").value.trim();
 
   if (title && category && loadedFile) {
-
     uploadFile(title, category);
   }
 });
@@ -297,7 +294,6 @@ function updateButtonColor() {
   var category = document.getElementById("infoCategorie").value.trim();
 
   if (title && category && loadedFile) {
-
     document.getElementById("EnvoyerPhoto").style.backgroundColor = "#1D6154"; // Vert
   }
 }
